@@ -1,10 +1,10 @@
-Fine-Tuning Meta Llama 3 (8B) Using Lamini SDK
+**Fine-Tuning Meta Llama 3 (8B) Using Lamini SDK**
 
 This project demonstrates how to fine-tune a Large Language Model (LLM) using the Lamini Python SDK with the Meta-Llama-3-8B-Instruct model.
 
 The project includes custom dataset creation, model initialization, and fine-tuning with configurable hyperparameters.
 
-📌 Project Description
+**📌 Project Description**
 
 In this project:
 
@@ -18,7 +18,7 @@ Hyperparameters such as learning rate are configured for optimization.
 
 This project demonstrates practical implementation of LLM fine-tuning workflows.
 
-🛠️ Tech Stack
+**🛠️ Tech Stack**
 
 Python
 
@@ -32,13 +32,13 @@ Streamlit
 
 Neo4j
 
-📂 Project Structure
-.
+**📂 Project Structure
+.**
 ├── finetune.py
 ├── requirements.txt
 └── README.md
 
-📊 Dataset Format
+**📊 Dataset Format**
 
 The dataset is structured as input-output pairs:
 
@@ -50,7 +50,7 @@ The dataset is structured as input-output pairs:
 
 This format helps the model learn instruction-based responses effectively.
 
-⚙️ Installation & Setup
+**⚙️ Installation & Setup**
 1️⃣ Clone the Repository
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
@@ -73,8 +73,8 @@ source venv/bin/activate
 3️⃣ Install Dependencies
 pip install -r requirements.txt
 
-🔑 API Key Configuration
-
+**🔑 API Key Configuration
+**
 ⚠️ Do NOT hardcode your API key.
 
 Set your Lamini API key as an environment variable:
@@ -94,8 +94,8 @@ Then update the script:
 import os
 lamini.api_key = os.getenv("LAMINI_API_KEY")
 
-🚀 Running the Script
-python finetune.py
+**🚀 Running the Script
+python finetune.py**
 
 
 The script will:
@@ -124,8 +124,8 @@ early_stopping
 
 optimizer (adam, sgd)
 
-🎯 Learning Outcomes
-
+**🎯 Learning Outcomes
+**
 Understanding LLM fine-tuning process
 
 Creating structured datasets for training
@@ -134,7 +134,7 @@ Configuring hyperparameters
 
 Working with Generative AI APIs
 
-📈 Future Enhancements
+**📈 Future Enhancements**
 
 Load dataset from external JSON/CSV file
 
