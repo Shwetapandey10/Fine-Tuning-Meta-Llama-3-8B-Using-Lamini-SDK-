@@ -1,8 +1,16 @@
+import os
+import lamini
+from lamini import Lamini
+from dotenv import load_dotenv
+
+load_dotenv()
+lamini.api_key = os.getenv("LAMINI_API_KEY")
+
 def get_data():
     data = [
         {
             "input": "Are there any step-by-step tutorials or walkthroughs available in the documentation?",
-            "output": "Yes, there are step-by-step tutorials and walkthroughs available in the documentation section. Here\u2019s an example for using Lamini to get insights into any python SDK: https://lamini-ai.github.io/example/",
+            "output": "Yes, there are step-by-step tutorials and walkthroughs available in the documentation section. Here's an example for using Lamini to get insights into any python SDK: https://lamini-ai.github.io/example/",
         },
         {
             "input": "Is the Lamini type system similar to a python type system?",
@@ -26,7 +34,7 @@ def get_data():
         },
         {
             "input": "Can Lamini be used on a regular computer, or do I need specialized hardware or software?",
-            "output": "Lamini can be used on a regular computer without any specialized hardware or software by using the python client or REST APIs. It is designed to be easily accessible and user-friendly.  The LLM Engine itself requires GPU accelerated servers capable of running large language models.  Lamini hosts such machines that can be easily connected to, e.g. from a jupyter notebook or python program.  Lamini also offers enterprise deployments of the LLM Engine on your infrastructure.",
+            "output": "Lamini can be used on a regular computer without any specialized hardware or software by using the python client or REST APIs. It is designed to be easily accessible and user-friendly. The LLM Engine itself requires GPU accelerated servers capable of running large language models. Lamini hosts such machines that can be easily connected to, e.g. from a jupyter notebook or python program. Lamini also offers enterprise deployments of the LLM Engine on your infrastructure.",
         },
         {
             "input": "Does Lamini require an internet connection to work, or can I use it offline?",
@@ -34,7 +42,7 @@ def get_data():
         },
         {
             "input": "Can Lamini help me with tasks like translating text or answering questions, or is it focused on generating text?",
-            "output": "Lamini is primarily focused on generating text, and it can be used for tasks like summarization and paraphrasing. Lamini can also be used to tune a LLM for tasks like translation and question answering. You\u2019re talking to a model tuned using Lamini right now!",
+            "output": "Lamini is primarily focused on generating text, and it can be used for tasks like summarization and paraphrasing. Lamini can also be used to tune a LLM for tasks like translation and question answering. You're talking to a model tuned using Lamini right now!",
         },
         {
             "input": "What is Lamini? Is it like a robot or a computer program?",
@@ -43,27 +51,20 @@ def get_data():
     ]
     return data
 
-import lamini
-from lamini import Lamini
-lamini.api_key="API_KEY"
+llm = Lamini(model_name="meta-llama/Meta-Llama-3-8B-Instruct")
 
-llm=Lamini(model_name="meta-llama/Meta-Llama-3-8B-Instruct")
+data = get_data()
 
-data=get_data()
-
-llm.tune(data_or_dataset_id=data,
-         finetune_args={'learning_rate':1.0e-4}
-          )
+llm.tune(
+    data_or_dataset_id=data,
+    finetune_args={'learning_rate': 1.0e-4}
+)
 
 '''
 Common hyperparameters to tune include:
 
 learning_rate (float) - the learning rate of the model
-
 early_stopping (bool) - whether to use early stopping or not
-
 max_steps (int) - the maximum number of steps to train for
-
 optim (str) - the optimizer to use, e.g. adam or sgd, a string from HuggingFace
-
 '''
